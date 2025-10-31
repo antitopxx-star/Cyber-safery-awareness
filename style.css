@@ -398,6 +398,15 @@ img {
     border-left: 5px solid #2874c0;
 }
 
+/* Ensure text inside how-it-works is visible against the light background */
+.how-it-works,
+.how-it-works p,
+.how-it-works h3,
+.how-it-works .step,
+.how-it-works .step p {
+    color: #2e468f !important;
+}
+
 .how-it-works h3 {
     color: #2874c0;
     font-size: 28px;

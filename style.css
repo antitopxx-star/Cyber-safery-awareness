@@ -416,6 +416,14 @@ img {
     text-align: center;
 }
 
+/* If JS animation doesn't run, steps may remain hidden (opacity:0).
+   Force them visible so the content always shows. */
+.how-it-works .step {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+}
+
 /* debug styles removed */
 
 .steps-container {

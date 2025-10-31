@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Safety Awareness</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <ul>
+            <li class="brand"><h1>#UNHACKATHON</h1></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="game.html">Games</a></li>
+            <li><a href="help.html">Help</a></li>
+        </ul>
+    </nav>
+<div class="container">
+    <h1>🎮 Cyber Safety Games</h1>
+       
+        <div id="main-menu" class="game-menu">
+            <div class="game-menu-btn" onclick="startGame('game1')">
+                <div class="game-icon">🔐</div>
+                <h2>Two-Factor Authentication</h2>
+                <p>Test your knowledge on 2FA security</p>
+            </div>
+
+            <div class="game-menu-btn" onclick="startGame('game2')">
+                <div class="game-icon">📱</div>
+                <h2>App Permissions</h2>
+                <p>Learn what apps should and shouldn't access</p>
+            </div>
+
+            <div class="game-menu-btn" onclick="startGame('game3')">
+                <div class="game-icon">📎</div>
+                <h2>Email Attachments</h2>
+                <p>Identify safe vs dangerous files</p>
+            </div>
+
+            <div class="game-menu-btn" onclick="startGame('game4')">
+                <div class="game-icon">🔑</div>
+                <h2>Strong Passwords</h2>
+                <p>Build stronger passwords</p>
+            </div>
+
+            <div class="game-menu-btn" onclick="startGame('game5')">
+                <div class="game-icon">🔄</div>
+                <h2>Updates & Backups</h2>
+                <p>Keep your devices secure</p>
+            </div>
+
+            <div class="game-menu-btn" onclick="startGame('game6')">
+                <div class="game-icon">🛡️</div>
+                <h2>App Permissions Quiz</h2>
+                <p>Control what data you share</p>
+            </div>
+        </div>
+
+        <div id="game1" class="game-container">
+            <button class="back-btn" onclick="backToMenu()">← Back to Menu</button>
+            <div class="game-header">
+                <h2>🔐 Two-Factor Authentication Quiz</h2>
+                <div class="progress-bar">
+                    <div id="progress1" class="progress-fill"></div>
+                </div>
+            </div>
+            <div id="game1-questions"></div>
+            <div id="score1" class="score-board" style="display: none;"></div>
+        </div>
+
+        <div id="game2" class="game-container">
+            <button class="back-btn" onclick="backToMenu()">← Back to Menu</button>
+            <div class="game-header">
+                <h2>📱 App Permissions Challenge</h2>
+                <div class="progress-bar">
+                    <div id="progress2" class="progress-fill"></div>
+                </div>
+            </div>
+            <div id="game2-questions"></div>
+            <div id="score2" class="score-board" style="display: none;"></div>
+        </div>
+
+        <div id="game3" class="game-container">
+            <button class="back-btn" onclick="backToMenu()">← Back to Menu</button>
+            <div class="game-header">
+                <h2>📎 Email Attachment Safety</h2>
+                <div class="progress-bar">
+                    <div id="progress3" class="progress-fill"></div>
+                </div>
+            </div>
+            <div id="game3-questions"></div>
+            <div id="score3" class="score-board" style="display: none;"></div>
+        </div>
+
+        <div id="game4" class="game-container">
+            <button class="back-btn" onclick="backToMenu()">← Back to Menu</button>
+            <div class="game-header">
+                <h2>🔑 Password Security Quiz</h2>
+                <div class="progress-bar">
+                    <div id="progress4" class="progress-fill"></div>
+                </div>
+            </div>
+            <div id="game4-questions"></div>
+            <div id="score4" class="score-board" style="display: none;"></div>
+        </div>
+
+        <div id="game5" class="game-container">
+            <button class="back-btn" onclick="backToMenu()">← Back to Menu</button>
+            <div class="game-header">
+                <h2>🔄 Updates & Backups Quiz</h2>
+                <div class="progress-bar">
+                    <div id="progress5" class="progress-fill"></div>
+                </div>
+            </div>
+            <div id="game5-questions"></div>
+            <div id="score5" class="score-board" style="display: none;"></div>
+        </div>
+
+        <div id="game6" class="game-container">
+            <button class="back-btn" onclick="backToMenu()">← Back to Menu</button>
+            <div class="game-header">
+                <h2>🛡️ App Permissions & Privacy</h2>
+                <div class="progress-bar">
+                    <div id="progress6" class="progress-fill"></div>
+                </div>
+            </div>
+            <div id="game6-questions"></div>
+            <div id="score6" class="score-board" style="display: none;"></div>
+        </div>
+    </div>
+
+    <script>
+        const games = {
+            game1: {
+                questions: [
+                    {
+                        q: "What is Two-Factor Authentication (2FA)?",
+                        options: [
+                            "Using two different passwords",
+                            "A password plus a verification code",
+                            "Logging in twice",
+                            "Having two email accounts"
+                        ],
+                        correct: 1,
+                        explanation: "2FA requires both something you know (password) and something you have (phone/code)."
+                    },
+                    {
+                        q: "Which is an example of 2FA?",
+                        options: [
+                            "Password only",
+                            "Password + text message code",
+                            "Email address only",
+                            "Security question"
+                        ],
+                        correct: 1,
+                        explanation: "Password plus a code sent to your phone is classic 2FA!"
+                    },
+                    {
+                        q: "Why is 2FA important?",
+                        options: [
+                            "It makes logging in faster",
+                            "It protects your account even if password is stolen",
+                            "It's required by law",
+                            "It saves your passwords"
+                        ],
+                        correct: 1,
+                        explanation: "Even if someone steals your password, they can't access your account without the second factor."
+                    },
+                    {
+                        q: "What should you do if you get an unexpected 2FA code?",
+                        options: [
+                            "Ignore it",
+                            "Enter it immediately",
+                            "Change your password right away",
+                            "Share it with support"
+                        ],
+                        correct: 2,
+                        explanation: "An unexpected 2FA code means someone tried to log into your account. Change your password!"
+                    },
+                    {
+                        q: "Which is the most secure 2FA method?",
+                        options: [
+                            "SMS text message",
+                            "Email code",
+                            "Authenticator app",
+                            "Security questions"
+                        ],
+                        correct: 2,
+                        explanation: "Authenticator apps are more secure than SMS because they can't be intercepted."
+                    }
+                ]
+            },
+            game2: {
+                questions: [
+                    {
+                        q: "A weather app asks for access to your location. Is this reasonable?",
+                        options: [
+                            "Yes, it needs location to show local weather",
+                            "No, weather apps don't need location",
+                            "Only if you're traveling",
+                            "It doesn't matter"
+                        ],
+                        correct: 0,
+                        explanation: "Weather apps need your location to provide accurate local forecasts."
+                    },
+                    {
+                        q: "A flashlight app asks for access to your contacts. Should you allow it?",
+                        options: [
+                            "Yes, all apps need contacts",
+                            "No, flashlights don't need contact access",
+                            "Only on weekends",
+                            "Yes, to improve performance"
+                        ],
+                        correct: 1,
+                        explanation: "A flashlight app has no legitimate reason to access your contacts. This is suspicious!"
+                    },
+                    {
+                        q: "Which permission should you be most careful about?",
+                        options: [
+                            "Wi-Fi connection",
+                            "Location (Always)",
+                            "Notifications",
+                            "Vibration"
+                        ],
+                        correct: 1,
+                        explanation: "'Location Always' lets apps track you 24/7, even when not using the app."
+                    },
+                    {
+                        q: "A game asks for microphone access. Should you allow it?",
+                        options: [
+                            "Yes, all games need microphone",
+                            "No, unless it has voice chat features",
+                            "Always allow for better graphics",
+                            "It doesn't matter for games"
+                        ],
+                        correct: 1,
+                        explanation: "Only allow microphone if the game has voice chat. Otherwise, it's suspicious."
+                    },
+                    {
+                        q: "How often should you review app permissions?",
+                        options: [
+                            "Never",
+                            "Once a year",
+                            "Every few months",
+                            "Every day"
+                        ],
+                        correct: 2,
+                        explanation: "Review permissions every few months to remove unnecessary access."
+                    }
+                ]
+            },
+            game3: {
+                questions: [
+                    {
+                        q: "You receive an email from your 'bank' with an attachment labeled 'statement.exe'. What should you do?",
+                        options: [
+                            "Open it immediately",
+                            "Delete it - banks don't send .exe files",
+                            "Forward it to friends",
+                            "Save it for later"
+                        ],
+                        correct: 1,
+                        explanation: ".exe files are executable programs. Banks send PDFs, not programs!"
+                    },
+                    {
+                        q: "Which file extension is MOST dangerous?",
+                        options: [
+                            ".jpg",
+                            ".pdf",
+                            ".exe",
+                            ".txt"
+                        ],
+                        correct: 2,
+                        explanation: ".exe files are executable programs that can install malware on your computer."
+                    },
+                    {
+                        q: "Your friend sends you an unexpected .zip file. What should you do?",
+                        options: [
+                            "Open it right away",
+                            "Text them to confirm they sent it",
+                            "Delete it immediately",
+                            "Forward it to others"
+                        ],
+                        correct: 1,
+                        explanation: "Even from friends, unexpected files could mean their account was hacked. Confirm first!"
+                    },
+                    {
+                        q: "Which attachment is safest to open?",
+                        options: [
+                            "urgent_payment.exe",
+                            "photo.jpg.exe",
+                            "document.pdf from a known sender",
+                            "free_money.scr"
+                        ],
+                        correct: 2,
+                        explanation: "PDFs from known, trusted senders are generally safe. Always verify the sender first."
+                    },
+                    {
+                        q: "What does a 'double extension' like 'photo.jpg.exe' indicate?",
+                        options: [
+                            "It's a photo",
+                            "It's safe",
+                            "It's malware pretending to be a photo",
+                            "It's a video"
+                        ],
+                        correct: 2,
+                        explanation: "Double extensions are a trick to make malware look like safe files!"
+                    }
+                ]
+            },
+            game4: {
+                questions: [
+                    {
+                        q: "Which password is strongest?",
+                        options: [
+                            "password123",
+                            "MyDog2024",
+                            "R@nd0mP@ssw0rd!2024",
+                            "12345678"
+                        ],
+                        correct: 2,
+                        explanation: "Long passwords with mixed characters, numbers, and symbols are strongest!"
+                    },
+                    {
+                        q: "How long should a strong password be?",
+                        options: [
+                            "At least 6 characters",
+                            "At least 8 characters",
+                            "At least 12 characters",
+                            "Exactly 10 characters"
+                        ],
+                        correct: 2,
+                        explanation: "Modern security standards recommend at least 12 characters for strong passwords."
+                    },
+                    {
+                        q: "Should you use the same password for multiple accounts?",
+                        options: [
+                            "Yes, it's easier to remember",
+                            "No, each account needs a unique password",
+                            "Only for important accounts",
+                            "It doesn't matter"
+                        ],
+                        correct: 1,
+                        explanation: "If one account is breached, hackers will try that password on all your other accounts!"
+                    },
+                    {
+                        q: "What's the best way to remember multiple strong passwords?",
+                        options: [
+                            "Write them on sticky notes",
+                            "Use the same password everywhere",
+                            "Use a password manager",
+                            "Tell a friend to remember them"
+                        ],
+                        correct: 2,
+                        explanation: "Password managers securely store all your passwords and even generate strong ones!"
+                    },
+                    {
+                        q: "Which of these should NOT be in your password?",
+                        options: [
+                            "Special characters like !@#",
+                            "Your birthday",
+                            "Random numbers",
+                            "Uppercase letters"
+                        ],
+                        correct: 1,
+                        explanation: "Personal information like birthdays can be easily guessed by hackers."
+                    }
+                ]
+            },
+            game5: {
+                questions: [
+                    {
+                        q: "Why are software updates important?",
+                        options: [
+                            "They make your device look different",
+                            "They fix security vulnerabilities",
+                            "They're not important",
+                            "They delete your files"
+                        ],
+                        correct: 1,
+                        explanation: "Updates patch security holes that hackers could exploit."
+                    },
+                    {
+                        q: "How often should you back up your important files?",
+                        options: [
+                            "Never",
+                            "Once a year",
+                            "At least once a month",
+                            "Only when you remember"
+                        ],
+                        correct: 2,
+                        explanation: "Regular monthly backups ensure you don't lose important data if something goes wrong."
+                    },
+                    {
+                        q: "What's the best backup strategy?",
+                        options: [
+                            "No backup needed",
+                            "One backup on your computer",
+                            "Multiple backups in different locations",
+                            "Email files to yourself"
+                        ],
+                        correct: 2,
+                        explanation: "The 3-2-1 rule: 3 copies, 2 different storage types, 1 off-site backup."
+                    },
+                    {
+                        q: "Your device prompts you to install an update. What should you do?",
+                        options: [
+                            "Ignore it forever",
+                            "Install it when convenient",
+                            "Wait several months",
+                            "Delete the notification"
+                        ],
+                        correct: 1,
+                        explanation: "Install updates soon, but at a convenient time when you can wait for it to complete."
+                    },
+                    {
+                        q: "Where should you store your backup?",
+                        options: [
+                            "Only on your computer",
+                            "Cloud storage or external drive",
+                            "On sticky notes",
+                            "In your email drafts"
+                        ],
+                        correct: 1,
+                        explanation: "Cloud storage or external drives keep your backup safe if your computer fails."
+                    }
+                ]
+            },
+            game6: {
+                questions: [
+                    {
+                        q: "A social media app asks to access your camera. Should you allow it?",
+                        options: [
+                            "No, never allow camera access",
+                            "Yes, if you plan to post photos/videos",
+                            "Only on Tuesdays",
+                            "Always allow all permissions"
+                        ],
+                        correct: 1,
+                        explanation: "Social media needs camera access to let you post photos. This is reasonable."
+                    },
+                    {
+                        q: "Which setting gives apps the MOST access to your location?",
+                        options: [
+                            "Never",
+                            "While Using App",
+                            "Always",
+                            "Ask Next Time"
+                        ],
+                        correct: 2,
+                        explanation: "'Always' lets apps track you 24/7, even when you're not using them."
+                    },
+                    {
+                        q: "What should you do if an app asks for permissions it doesn't need?",
+                        options: [
+                            "Grant it anyway",
+                            "Deny the permission or uninstall the app",
+                            "Ignore the request",
+                            "Tell all your friends"
+                        ],
+                        correct: 1,
+                        explanation: "If an app asks for suspicious permissions, deny them or find a better app!"
+                    },
+                    {
+                        q: "Can you change app permissions after installation?",
+                        options: [
+                            "No, they're permanent",
+                            "Yes, in your device settings",
+                            "Only by reinstalling",
+                            "Only on new phones"
+                        ],
+                        correct: 1,
+                        explanation: "You can always review and change permissions in Settings → Privacy/Apps."
+                    },
+                    {
+                        q: "A calculator app asks for access to your contacts. What does this suggest?",
+                        options: [
+                            "Normal behavior",
+                            "The app might be collecting your data",
+                            "It's trying to help you",
+                            "All calculators need this"
+                        ],
+                        correct: 1,
+                        explanation: "Calculators have no need for contacts. This is a red flag for data collection!"
+                    }
+                ]
+            }
+        };
+
+        let currentGame = null;
+        let currentScore = 0;
+        let currentQuestion = 0;
+
+        function startGame(gameId) {
+            currentGame = gameId;
+            currentScore = 0;
+            currentQuestion = 0;
+            
+            document.getElementById('main-menu').style.display = 'none';
+            document.getElementById(gameId).classList.add('active');
+            
+            loadQuestions(gameId);
+        }
+
+        function loadQuestions(gameId) {
+            const container = document.getElementById(gameId + '-questions');
+            const questions = games[gameId].questions;
+            
+            container.innerHTML = '';
+            
+            questions.forEach((q, index) => {
+                const card = document.createElement('div');
+                card.className = 'question-card';
+                card.id = `q${index}`;
+                
+                let optionsHtml = '';
+                q.options.forEach((option, i) => {
+                    optionsHtml += `
+                        <div class="answer-option" onclick="checkAnswer('${gameId}', ${index}, ${i}, ${q.correct})">
+                            ${option}
+                        </div>
+                    `;
+                });
+                
+                card.innerHTML = `
+                    <div class="question-text">Question ${index + 1}: ${q.q}</div>
+                    ${optionsHtml}
+                    <div id="feedback${index}" class="feedback"></div>
+                `;
+                
+                container.appendChild(card);
+            });
+        }
+
+        function checkAnswer(gameId, questionIndex, selectedAnswer, correctAnswer) {
+            const options = document.querySelectorAll(`#q${questionIndex} .answer-option`);
+            const feedback = document.getElementById(`feedback${questionIndex}`);
+            const gameNum = gameId.replace('game', '');
+            
+            options.forEach((opt, i) => {
+                opt.classList.add('disabled');
+                if (i === correctAnswer) {
+                    opt.classList.add('correct');
+                } else if (i === selectedAnswer && i !== correctAnswer) {
+                    opt.classList.add('incorrect');
+                }
+            });
+            
+            feedback.classList.add('show');
+            
+            if (selectedAnswer === correctAnswer) {
+                currentScore++;
+                feedback.classList.add('correct');
+                feedback.innerHTML = `✓ Correct! ${games[gameId].questions[questionIndex].explanation}`;
+            } else {
+                feedback.classList.add('incorrect');
+                feedback.innerHTML = `✗ Incorrect. ${games[gameId].questions[questionIndex].explanation}`;
+            }
+            
+            currentQuestion++;
+            updateProgress(gameNum);
+            
+            if (currentQuestion === games[gameId].questions.length) {
+                setTimeout(() => showScore(gameNum), 1000);
+            }
+        }
+
+        function updateProgress(gameNum) {
+            const totalQuestions = games[`game${gameNum}`].questions.length;
+            const progress = (currentQuestion / totalQuestions) * 100;
+            document.getElementById(`progress${gameNum}`).style.width = progress + '%';
+        }
+
+        function showScore(gameNum) {
+            const scoreDiv = document.getElementById(`score${gameNum}`);
+            const totalQuestions = games[`game${gameNum}`].questions.length;
+            const percentage = Math.round((currentScore / totalQuestions) * 100);
+            
+            let message = '';
+            if (percentage >= 80) {
+                message = '🌟 Excellent! You\'re a cyber security expert!';
+            } else if (percentage >= 60) {
+                message = '👍 Good job! Keep learning!';
+            } else {
+                message = '📚 Keep practicing! Review the lessons and try again!';
+            }
+            
+            scoreDiv.innerHTML = `
+                <div style="font-size: 32px; margin-bottom: 15px;">${currentScore}/${totalQuestions}</div>
+                <div style="font-size: 20px;">${percentage}% Correct</div>
+                <div style="font-size: 18px; margin-top: 10px;">${message}</div>
+            `;
+            scoreDiv.style.display = 'block';
+        }
+
+        function backToMenu() {
+            document.querySelectorAll('.game-container').forEach(game => {
+                game.classList.remove('active');
+            });
+            document.getElementById('main-menu').style.display = 'grid';
+            currentGame = null;
+            currentScore = 0;
+            currentQuestion = 0;
+        }
+    </script>
+</body>
+</html>

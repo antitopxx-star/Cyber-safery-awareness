@@ -404,7 +404,8 @@ img {
 .how-it-works h3,
 .how-it-works .step,
 .how-it-works .step p {
-    color: #2e468f !important;
+    /* enforce a clearly-visible color for paragraphs and step text */
+    color: #000000 !important;
 }
 
 .how-it-works h3 {

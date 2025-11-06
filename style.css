@@ -453,7 +453,7 @@ img {
 }
 
 .step h4 {
-    color: #2874c0;
+    color: #266eb7;
     font-size: 18px;
     margin-bottom: 10px;
     margin-top: 0;
@@ -966,6 +966,7 @@ img {
     padding: 0 20px;
 }
 
+
 .help-page .step {
     background: #ffffff;
     color: #222;
@@ -1105,6 +1106,9 @@ img {
 /* ===== Steps Container ===== */
 .steps-container {
     margin-bottom: 4rem;
+}
+.steps-container li{
+    color: #000000;
 }
 
 .steps-container h2 {
